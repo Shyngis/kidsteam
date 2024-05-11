@@ -1,0 +1,125 @@
+.logo {
+  width: 120px;
+  height: 31px;
+  background: rgba(255, 255, 255, 0.2);
+  margin: 16px 24px 16px 0;
+  float: left;
+}
+
+
+nz-content {
+  padding: 50px;
+  background: #541AB2;
+  height: max-content;
+}
+
+.inner-box {
+  overflow-x: hidden;
+  /* Hide horizontal scrollbar */
+}
+
+
+
+.inner-content {
+  background: #fff;
+  padding: 3em;
+  border-radius: 15px;
+
+  .title {
+    font-size: 36px;
+    font-weight: bold;
+    color: #541AB2;
+  }
+
+  .titleMobile {
+    font-size: 24px;
+    font-weight: bold;
+    color: #541AB2;
+  }
+}
+
+
+.bordered-btn {
+  border-radius: 7px;
+  margin: 1em;
+}
+
+
+
+
+.buttons {
+  display: flex;
+
+  button {
+    margin: 0 10px;
+  }
+}
+
+.nzMargin1em {
+  margin-top: 1em;
+}
+
+.bordered-btn {
+  border-radius: 7px;
+  margin: 1em;
+}
+
+.login-btn {
+  background: #541AB2;
+  border: #541AB2;
+}
+
+.nzTextCenter {
+  text-align: center;
+}
+
+/*Login form styles0*/
+.login-form {
+  //max-width: 300px;
+}
+
+.login-form-margin {
+  margin-bottom: 16px;
+}
+
+.login-form-forgot {
+  float: right;
+}
+
+.login-form-button {
+  width: 100%;
+  background: #541AB2;
+  color: #ffffff;
+  border: #541AB2;
+  height: 45px;
+  font-size: large;
+  border-radius: 10px;
+}
+
+.login-btn {
+  background: #541AB2;
+  border: #541AB2;
+}
+
+.login-form-button {
+  width: 100%;
+  background: #541AB2;
+  color: #ffffff;
+  border: #541AB2;
+  height: 45px;
+  font-size: large;
+  border-radius: 10px;
+}
+
+/*Login form styles0*/
+.login-form {
+  //max-width: 300px;
+}
+
+.login-form-margin {
+  margin-bottom: 16px;
+}
+
+.login-form-forgot {
+  float: right;
+}

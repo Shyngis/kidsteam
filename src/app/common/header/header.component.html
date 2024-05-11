@@ -1,0 +1,28 @@
+
+<nz-header class="header">
+  <img src="assets/images/logo.png" width="40" >
+
+
+  <div class="buttons">
+    <!-- <app-lang-select></app-lang-select> -->
+    <!-- <button *ngIf="isLoginPage()" nz-button nzType="default" class="bordered-btn" [routerLink]="['/registration']">
+      {{'REGISTER' | translate}}
+    </button>
+    <button *ngIf="isRegisterPage()" nz-button nzType="primary" class="bordered-btn login-btn"
+      [routerLink]="['/signin']">
+      {{'SIGN_IN_SHORT' | translate}}
+    </button> -->
+    @if(isLoginPage()){
+     <button nz-button nzType="default" class="bordered-btn" [routerLink]="['/registration']">
+          Sign-up
+        </button>
+      }
+      @else if(isRegisterPage()){
+        <button nz-button nzType="primary" class="bordered-btn login-btn" [routerLink]="['/signin']">
+          Sign-in
+        </button>
+      }
+  </div>
+</nz-header>
+
+<router-outlet></router-outlet>

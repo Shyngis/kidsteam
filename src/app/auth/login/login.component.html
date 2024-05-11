@@ -1,0 +1,57 @@
+<p>login works!</p>
+
+
+<nz-content [ngStyle]="isMobile ? isMobileHeight : isWebHeight">
+  <div nz-row nzJustify="center">
+    <div nz-col [nzSpan]="isMobile ? 24 : 8">
+      <div class="inner-content">
+        <div class="title nzTextCenter" [ngClass]="{'titleMobile' : isMobile, 'title': !isMobile}">
+          <!-- {{ 'LOGIN' | translate }} -->
+          Login
+        </div>
+        <div class="subtitle nzTextCenter">
+          <!-- {{ 'PLEASE_ENTER_EMAIL' | translate }} <br>
+          {{ 'PASS_TO_GO' | translate }} -->
+                PLEASE_ENTER_EMAIL <br>
+                PASS_TO_GO
+        </div>
+        <div class="form nzMargin1em w-100">
+          <form nz-form [formGroup]="validateForm" class="login-form" (ngSubmit)="submitForm()">
+            <nz-form-item>
+              <nz-form-control nzErrorTip="{{'FILL_FIRST_NAME'}}">
+                <nz-input-group nzPrefixIcon="user">
+                  <input type="text" nz-input formControlName="username" placeholder=" {{ 'USER_NAME'}}" />
+                </nz-input-group>
+              </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+              <nz-form-control nzErrorTip="{{ 'PASSWORD'}}!">
+                <nz-input-group nzPrefixIcon="lock">
+                  <input type="password" nz-input formControlName="password"
+                    placeholder=" {{ 'PASSWORD'}}" />
+                </nz-input-group>
+              </nz-form-control>
+            </nz-form-item>
+            <div nz-row class="login-form-margin">
+              <div nz-col [nzSpan]="12">
+                <label nz-checkbox>
+                  <span>{{ 'REMEMBER_ME'}}</span>
+                </label>
+              </div>
+              <div nz-col [nzSpan]="12">
+                <a [routerLink]="['/forgot-password']" class="login-form-forgot">{{ 'FORGOT_PASS' }}</a>
+              </div>
+            </div>
+            <button [disabled]="isLoading" nz-button class="login-form-button login-form-margin" [nzType]="'primary'">
+              {{ 'SIGN_IN' }}
+            </button>
+            <div class="nzTextCenter">
+              {{ 'DONT_HAVE_ACCOUNT' }}
+              <a [routerLink]="['/registration']"> {{ 'CREATE_ACCOUNT' }}</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</nz-content>

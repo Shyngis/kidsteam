@@ -1,0 +1,29 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #ffffff;
+}
+
+.menu {
+  margin: 0;
+  padding: 0;
+}
+
+
+.language-dropdown {
+  margin-right: 16px;
+}
+
+.buttons {
+  display: flex;
+
+  button {
+    margin: 0 10px;
+  }
+}
+
+.language-dropdown1 .ant-select-selector {
+  border: none !important;
+  box-shadow: none !important;
+}
