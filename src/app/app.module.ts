@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NZ_I18N } from 'ng-zorro-antd/i18n';
@@ -19,6 +18,11 @@ import { NzFormModule } from 'ng-zorro-antd/form';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LangSelectComponent } from './shared/lang-select/lang-select.component';
 import { NzSelectModule } from 'ng-zorro-antd/select';
+import { ClientComponent } from './client/client.component';
+import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
+import { NzAvatarModule } from 'ng-zorro-antd/avatar';
+import { NzDividerModule } from 'ng-zorro-antd/divider';
+import { NzDrawerModule } from 'ng-zorro-antd/drawer';
 registerLocaleData(en);
 
 @NgModule({
@@ -28,7 +32,7 @@ registerLocaleData(en);
     LoginComponent,
     RegisterComponent,
     LangSelectComponent,
-   
+    ClientComponent
   ],
   imports: [
     BrowserModule,
@@ -40,6 +44,10 @@ registerLocaleData(en);
     ReactiveFormsModule,
     FormsModule,
     NzSelectModule,
+    NzDropDownModule,
+    NzAvatarModule,
+    NzDividerModule,
+    NzDrawerModule
 
   ],
   providers: [

@@ -8,7 +8,8 @@ import { Location } from '@angular/common';
   styleUrl: './lang-select.component.scss'
 })
 export class LangSelectComponent {
-  langList: string[] = ["kazakh","russian","english"];  
+  langList: string[] = ["kazakh","russian","english"]; 
+  byDefaultLang:string = this.langList[0] 
   selectedLang!: string;
 
   constructor(

@@ -8,10 +8,9 @@
   </nz-select>
 </div> -->
 
-<p>dendme</p>
 @if(langList) {
 <div class="language-dropdown1">
-  <nz-select class="custom-nz-select"  [(ngModel)]="selectedLang" [ngModelOptions]="{standalone: true}"
+  <nz-select class="custom-nz-select"  [(ngModel)]="byDefaultLang" [ngModelOptions]="{standalone: true}"
     (ngModelChange)="onChangeLang()">
 
     @for(option of langList; track option) {
