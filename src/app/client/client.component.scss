@@ -1,0 +1,176 @@
+.logo {
+  width: 120px;
+  height: 31px;
+  background: rgba(255, 255, 255, 0.2);
+  margin: 16px 30px 16px 0;
+  float: left;
+}
+
+.header-menu {
+  line-height: 64px;
+}
+
+.sider-menu {
+  height: 100%;
+  border-right: 0;
+}
+
+.inner-layout {
+  padding: 2em;
+  min-height: 100vh;
+  //height: 100vh;
+}
+
+nz-breadcrumb {
+  margin: 16px 0;
+}
+
+nz-content {
+  background: #fff;
+  padding: 24px;
+  height: 100vh;
+  //min-height: 280px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #ffffff;
+}
+
+.menu-list {
+  li {
+    width: auto;
+    margin: 0 15px;
+  }
+}
+
+.ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected {
+  background-color: #F7EBFD;
+  color: #480CA8;
+  border-radius: 10px;
+}
+
+.active {
+  background-color: #F7EBFD;
+  color: #480CA8;
+  border-radius: 10px;
+}
+
+.ant-menu-vertical .ant-menu-item::after,
+.ant-menu-vertical-left .ant-menu-item::after,
+.ant-menu-vertical-right .ant-menu-item::after,
+.ant-menu-inline .ant-menu-item::after {
+  //border-right: 3px solid #541AB2;
+  border: none;
+}
+
+.ant-menu-item:hover {
+  color: #541AB2;
+}
+
+.ant-menu-inline {
+  //margin-top: 2em;
+  width: auto;
+}
+
+.language-dropdown1 .ant-select-selector {
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.ant-menu-inline.ant-menu-root .ant-menu-item,
+.ant-menu-inline.ant-menu-root .ant-menu-submenu-title {
+  width: auto;
+}
+
+.hidden {
+  //opacity: 0;
+  display: none;
+  //max-height: 0;
+  //transition: opacity 0.3s, max-height 0.3s, visibility 0s 0.3s;
+}
+
+.visible {
+  //opacity: 1;
+  display: block;
+  //max-height: 1000px; /* Adjust the max-height to the maximum height you want the element to have */
+  //transition: opacity 0.3s, max-height 0.3s, visibility 0s;
+}
+
+.toggle-menu-btn {
+  position: fixed;
+  bottom: 10px;
+  z-index: 1;
+}
+
+.menu-list {
+  position: relative;
+  height: 100%;
+}
+
+.fixed-bottom {
+  position: fixed !important;
+  bottom: 10px !important;
+}
+
+
+@media only screen and (max-width: 768px) {
+  ul.menu {
+    display: none !important
+  }
+}
+
+
+.layout {
+  min-height: 100vh;
+}
+
+.logo {
+  height: 32px;
+  background: rgba(255, 255, 255, 0.2);
+  margin: 16px;
+}
+
+nz-header {
+  background: #fff;
+  padding: 0;
+}
+
+nz-content {
+  //margin: 24px 16px 0;
+}
+
+.inner-content {
+  padding: 24px;
+  background: #fff;
+  min-height: 360px;
+}
+
+nz-footer {
+  text-align: center;
+}
+
+.ant-drawer-wrapper-body {
+  margin-bottom: 1em !important;
+}
+
+.ant-drawer-top.ant-drawer-open .ant-drawer-content-wrapper {
+  height: 100% !important;
+}
+
+ul.mobile li:last-child {
+  padding-left: 24px;
+  background: #d9363e !important;
+  border-radius: 10px !important;
+  color: #fff !important;
+}
+
+.steam-kz {
+  font-size: larger;
+  font-weight: 700;
+  margin-left: 1em;
+  color: #111111;
+  text-transform: uppercase;
+}

@@ -1,0 +1,202 @@
+<nz-layout>
+  <nz-header class="header">
+
+    <a href="https://steam.kz">
+      <img src="../../../../assets/images/logo2.svg" width="120">
+    </a>
+
+    <button *ngIf="isMobile" (click)="openDrawer()" nz-button nzType="default"><span nz-icon nzType="menu"></span>
+    </button>
+    
+    <div *ngIf="!isMobile" class="profile-dropdown1 d-flex align-items-center">
+      <!--      <ul nz-menu nzTheme="light" nzMode="horizontal" class="menu">-->
+      <!--        <li nz-menu-item>-->
+      <!--          <a href="https://steam.kz">-->
+      <!--            <span nz-icon nzType="star" nzTheme="outline"></span>&nbsp;Steam.kz</a>-->
+      <!--        </li>-->
+      <!--      </ul>-->
+      <app-lang-select></app-lang-select>
+      <a nz-dropdown [nzDropdownMenu]="menuProfile">
+        <span *ngIf="isGuestMode()">
+          <nz-avatar nzIcon="user" [nzSrc]="userInfo?.avatar"></nz-avatar>
+          {{ (userInfo) ? userInfo?.firstname : "Гость" }}
+        </span>
+        <button *ngIf="isGuestMode()" [nzSize]="'small'" [routerLink]="['/signin']" nz-button nzType="default">
+          <span nz-icon nzType="login"></span>
+          Войти
+        </button>
+        <span *ngIf="userInfo" nz-icon nzType="down"></span>
+      </a>
+      <nz-dropdown-menu #menuProfile="nzDropdownMenu">
+        <ul nz-menu nzSelectable *ngIf="userInfo">
+          <li [routerLink]="['/client/settings']" nz-menu-item>
+            {{ 'PERSONAL_AREA' }}
+          </li>
+          <li (click)="logOut()" nz-menu-item>
+            {{ 'LOG_OUT' }}
+          </li>
+        </ul>
+      </nz-dropdown-menu>
+    </div>
+  </nz-header>
+
+  <nz-drawer [nzClosable]="true" [nzVisible]="visible" [nzPlacement]="placement" nzTitle="Меню" (nzOnClose)="close()">
+    <ng-container *nzDrawerContent>
+      <app-lang-select></app-lang-select>
+      <ul nz-menu nzMode="inline" nzTheme="light" class="menu-list m-0" [ngClass]="{'ul-mobile' : isMobile}">
+        <nz-divider nzText="{{'MENU_MAIN'}}" nzOrientation="left"></nz-divider>
+        <li [routerLink]="['/client/main']" routerLinkActive="active" nz-menu-item nz-tooltip nzTooltipPlacement="right"
+          (click)="onClickMenuMobile()">
+          <span nz-icon nzType="home" nzTheme="outline"></span>
+          <span>{{ 'MAIN' }}</span>
+        </li>
+        <li *ngIf="isGuestMode()" [routerLink]="['/client/common-courses']" routerLinkActive="active" nz-menu-item
+          nz-tooltip nzTooltipPlacement="right" (click)="onClickMenuMobile()">
+          <span nz-icon nzType="folder" nzTheme="outline"></span>
+          <span>{{ 'GENERAL_COURSES' }}</span>
+        </li>
+        <li *ngIf="isGuestMode()" [routerLink]="['/client/subjects']" routerLinkActive="active"
+          [class.active]="isSubjectCourseRoute()" nz-menu-item nz-tooltip nzTooltipPlacement="right"
+          (click)="onClickMenuMobile()">
+          <span nz-icon nzType="read" nzTheme="outline"></span>
+          <span>{{ 'LESSON_COURSES' }}</span>
+        </li>
+        <li [routerLink]="['/client/packages']" routerLinkActive="active" nz-menu-item nz-tooltip
+          nzTooltipPlacement="right" (click)="onClickMenuMobile()">
+          <span nz-icon nzType="shopping" nzTheme="outline"></span>
+          <span>{{ 'PACKAGES' }}</span>
+        </li>
+
+        <nz-divider *ngIf="isGuestMode()" nzText="Аккаунт" nzOrientation="left"></nz-divider>
+
+        <li *ngIf="isGuestMode()" [routerLink]="['/client/profile']" routerLinkActive="active" nz-menu-item nz-tooltip
+          nzTooltipPlacement="right" (click)="onClickMenuMobile()">
+          <span nz-icon nzType="user" nzTheme="outline"></span>
+          <span>Профиль</span>
+        </li>
+        <li nz-submenu nzTitle="{{ 'MY_PURCHASES' }}" nzIcon="shopping">
+          <ul>
+            <li nz-menu-item [routerLink]="['/client/my-purchases']">
+              {{ 'COURSE_PACKAGES' }}
+            </li>
+            <li nz-menu-item [routerLink]="['/client/my-common-courses']">
+              {{ 'GENERAL_COURSES' }}
+            </li>
+            <li nz-menu-item [routerLink]="['/client/my-lesson-courses']">
+              {{ 'LESSON_COURSES' }}
+            </li>
+          </ul>
+        </li>
+        <!--        <li *ngIf="!isGuestMode()" [routerLink]="['/client/my-purchases']" routerLinkActive="active" nz-submenu-->
+        <!--          nz-tooltip nzTooltipPlacement="right" (click)="onClickMenuMobile()">-->
+        <!--          <span nz-icon nzType="shopping" nzTheme="outline"></span>-->
+        <!--          <span>{{ 'MY_PURCHASES' }}</span>-->
+
+        <!--          <ul>-->
+        <!--            <li nz-menu-item>-->
+        <!--              {{'MY_COURSES'}}-->
+        <!--            </li>-->
+        <!--            <li nz-menu-item>-->
+        <!--              {{'MY_LESSONS'}}-->
+        <!--            </li>-->
+        <!--          </ul>-->
+
+        <!--        </li>-->
+
+
+        <li *ngIf="isGuestMode()" [routerLink]="['/client/settings']" routerLinkActive="active" nz-menu-item nz-tooltip
+          nzTooltipPlacement="right" (click)="onClickMenuMobile()">
+          <span nz-icon nzType="setting" nzTheme="outline"></span>
+          <span>Настройки</span>
+        </li>
+        <li *ngIf="isGuestMode()" routerLinkActive="active" nz-menu-item nz-tooltip nzTooltipPlacement="right"
+          (click)="logOut()">
+          <span nz-icon nzType="logout" nzTheme="outline"></span>
+          <span>Выход</span>
+        </li>
+      </ul>
+    </ng-container>
+  </nz-drawer>
+
+
+  <nz-layout>
+    <nz-sider nzWidth="300px" nzTheme="light" [ngClass]="{ 'hidden': isHidden, 'visible': !isHidden }">
+      <ul nz-menu nzMode="inline" nzTheme="light" class="menu-list">
+        <nz-divider nzText="{{'MENU_MAIN'}}" nzOrientation="left"></nz-divider>
+        <li [routerLink]="['/client/main']" routerLinkActive="active" nz-menu-item nz-tooltip nzTooltipPlacement="right"
+          (click)="onClickMenuMobile()">
+          <span nz-icon nzType="home" nzTheme="outline"></span>
+          <span>
+            {{ 'MAIN' }}
+          </span>
+        </li>
+        <li *ngIf="isGuestMode()" [routerLink]="['/client/common-courses']" routerLinkActive="active" nz-menu-item
+          nz-tooltip nzTooltipPlacement="right" (click)="onClickMenuMobile()">
+          <span nz-icon nzType="folder" nzTheme="outline"></span>
+          <span>
+            {{ 'COMMON_COURSE' }}
+          </span>
+        </li>
+        <li *ngIf="isGuestMode()" [routerLink]="['/client/subjects']" routerLinkActive="active"
+          [class.active]="isSubjectCourseRoute()" nz-menu-item nz-tooltip nzTooltipPlacement="right"
+          (click)="onClickMenuMobile()">
+          <span nz-icon nzType="read" nzTheme="outline"></span>
+          <span>
+            {{ 'LESSON_COURSE' }}
+          </span>
+        </li>
+        <li [routerLink]="['/client/packages']" routerLinkActive="active" nz-menu-item nz-tooltip
+          nzTooltipPlacement="right" (click)="onClickMenuMobile()">
+          <span nz-icon nzType="shopping" nzTheme="outline"></span>
+          <span>
+            {{ 'PACKAGES' }}
+          </span>
+        </li>
+
+        <nz-divider *ngIf="isGuestMode()" nzText="Аккаунт" nzOrientation="left"></nz-divider>
+
+        <li *ngIf="isGuestMode()" [routerLink]="['/client/profile']" routerLinkActive="active" nz-menu-item nz-tooltip
+          nzTooltipPlacement="right" (click)="onClickMenuMobile()">
+          <span nz-icon nzType="user" nzTheme="outline"></span>
+          <span>Профиль</span>
+        </li>
+        <li *ngIf="isGuestMode()" nz-submenu nzTitle="{{'MY_PURCHASES'}}">
+          <!-- <span nz-icon nzType="shopping" nzTheme="outline"></span> -->
+          <ul>
+            <li nz-menu-item [routerLink]="['/client/my-purchases']">
+              {{ 'COURSE_PACKAGES' }}
+            </li>
+            <li nz-menu-item [routerLink]="['/client/my-common-courses']">
+              {{ 'GENERAL_COURSES' }}
+            </li>
+            <li nz-menu-item [routerLink]="['/client/my-lesson-courses']">
+              {{ 'LESSON_COURSES' }}
+            </li>
+          </ul>
+        </li>
+        <!-- <li *ngIf="!isGuestMode()" [routerLink]="['/client/settings']" routerLinkActive="active"
+            nz-menu-item
+            nz-tooltip
+            nzTooltipPlacement="right"
+            (click)="onClickMenuMobile()"
+        >
+          <span nz-icon nzType="setting" nzTheme="outline"></span>
+          <span>Настройки</span>
+        </li> -->
+      </ul>
+
+
+    </nz-sider>
+    <nz-layout class="inner-layout">
+      <button *ngIf="!isMobile" (click)="isHidden = !isHidden" class="toggle-menu-btn" nz-button nzType="primary"
+        [nzSize]="'large'" nzShape="circle">
+        <span *ngIf="!isHidden" nz-icon nzType="menu-fold" nzTheme="outline"></span>
+        <span *ngIf="isHidden" nz-icon nzType="menu-unfold" nzTheme="outline"></span>
+      </button>
+      <router-outlet></router-outlet>
+
+
+    </nz-layout>
+  </nz-layout>
+</nz-layout>
+
