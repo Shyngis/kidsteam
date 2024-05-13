@@ -1,1 +1,67 @@
 <p>register works!</p>
+
+
+<nz-content [ngStyle]="isMobile ? isMobileHeight : isWebHeight">
+  <div nz-row nzJustify="center">
+    <div nz-col [nzSpan]="isMobile ? 24 : 8">
+      <div class="inner-content">
+        <div class="title nzTextCenter">
+          <!-- {{ 'CREATE_ACCOUNT' | translate }} -->
+          CREATE_ACCOUNT
+        </div>
+        <div class="subtitle nzTextCenter">
+          <!-- {{ 'FILL_FIELDS_TO_REGISTER' | translate }} <br>
+          {{ 'FOR_REGISTER' | translate }} -->
+          FILL_FIELDS_TO_REGISTER <br>
+          FOR_REGISTER
+        </div>
+        <div class="form nzMargin1em w-100">
+          <form nz-form [formGroup]="registerForm" class="login-form" (ngSubmit)="submitForm()">
+            <nz-form-item>
+              <nz-form-control nzErrorTip="{{ 'LAST_NAME'}}">
+                <nz-input-group nzPrefixIcon="user">
+                  <input type="text" nz-input formControlName="lastname" placeholder="{{ 'LAST_NAME'}}" />
+                </nz-input-group>
+              </nz-form-control>
+            </nz-form-item>
+
+            <nz-form-item>
+              <nz-form-control nzErrorTip="{{'FILL_FIRST_NAME'}}">
+                <nz-input-group nzPrefixIcon="user">
+                  <input type="text" nz-input formControlName="firstname" placeholder="{{'FIRST_NAME'}}" />
+                </nz-input-group>
+              </nz-form-control>
+            </nz-form-item>
+
+            <nz-form-item>
+              <nz-form-control nzErrorTip="{{'FILL_EMAIL'}}">
+                <nz-input-group nzPrefixIcon="mail">
+                  <input type="email" nz-input formControlName="email" placeholder="{{'EMAIL'}}" />
+                </nz-input-group>
+              </nz-form-control>
+            </nz-form-item>
+
+            <nz-form-item>
+              <nz-form-control nzErrorTip="{{'FILL_PASSWORD'}}">
+                <nz-input-group nzPrefixIcon="lock">
+                  <input type="password" nz-input formControlName="password" placeholder="{{'PASSWORD'}}" />
+                </nz-input-group>
+              </nz-form-control>
+            </nz-form-item>
+            <button [disabled]="isRegistering || registerForm.invalid" nz-button
+              class="login-form-button login-form-margin" [nzType]="'primary'">
+              {{'REGISTER'}}
+            </button>
+
+            <div class="nzTextCenter">
+              {{'HAVE_ACCOUNT'}}
+              <a [routerLink]="['/login']">
+                {{'LOGIN'}}
+              </a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</nz-content>

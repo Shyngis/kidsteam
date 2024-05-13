@@ -1,0 +1,27 @@
+
+<!-- <div class="language-dropdown1" *ngIf="langList">
+  <nz-select class="custom-nz-select" [(ngModel)]="selectedLang" [ngModelOptions]="{standalone: true}"
+    (ngModelChange)="onChangeLang()">
+    <nz-option *ngFor="let option of langList" [nzValue]="option.code" [nzLabel]="option.name">
+      {{ option.name }}
+    </nz-option>
+  </nz-select>
+</div> -->
+
+
+@if(langList) {
+<div class="language-dropdown1">
+  <nz-select class="custom-nz-select"  [(ngModel)]="selectedLang" [ngModelOptions]="{standalone: true}"
+    (ngModelChange)="onChangeLang()">
+
+    @for(option of langList; track option) {
+      <nz-option [nzValue]="option" [nzLabel]="option">
+        {{option}}
+      </nz-option>
+    }
+    @empty {
+      <p>something went wrong</p>
+    }
+  </nz-select>
+</div>
+}

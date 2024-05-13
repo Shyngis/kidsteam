@@ -1,0 +1,14 @@
+.language-dropdown1 {
+  display: flex !important
+}
+
+ nz-select {
+   margin-right: 8px;
+   width: 120px;
+ }
+/* CSS styles for mobile devices */
+@media only screen and (max-width: 768px) {
+  language-dropdown1 img {
+    display: none !important;
+  }
+}

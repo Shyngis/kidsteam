@@ -16,7 +16,9 @@ import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { Router, RouterOutlet } from '@angular/router';
 import { NzFormModule } from 'ng-zorro-antd/form';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { LangSelectComponent } from './shared/lang-select/lang-select.component';
+import { NzSelectModule } from 'ng-zorro-antd/select';
 registerLocaleData(en);
 
 @NgModule({
@@ -25,6 +27,7 @@ registerLocaleData(en);
     HeaderComponent,
     LoginComponent,
     RegisterComponent,
+    LangSelectComponent,
    
   ],
   imports: [
@@ -34,7 +37,9 @@ registerLocaleData(en);
     NzLayoutModule,
     NzButtonModule,
     NzFormModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule,
+    NzSelectModule,
 
   ],
   providers: [
